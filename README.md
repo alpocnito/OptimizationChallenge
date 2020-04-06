@@ -1,7 +1,8 @@
 # First of all
 > Pardon my English
 
-(OptimizationPictures/1.png)
+![1](OptimizationPictures/1.png)
+<script src="https://prnt.sc/rlql5k"></script>
 
 # Abstract
 My HashTable is pretty slow, so a bit of optimization will be good for it. I used [Callgrind profile with KCacheGrind][]  to analyse the slowest functions in my code. After that I rewrote this function in clear asm
