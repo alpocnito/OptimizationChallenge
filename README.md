@@ -1,7 +1,7 @@
 # First of all
 > Pardon my English
 
-[Contribution guidelines for this project](OptimizationChallenge/OptimizationPictures/1.png)
+[Contribution guidelines for this project](OptimizationPictures/1.png)
 
 # Abstract
 My HashTable is pretty slow, so a bit of optimization will be good for it. I used [Callgrind profile with KCacheGrind][]  to analyse the slowest functions in my code. After that I rewrote this function in clear asm
