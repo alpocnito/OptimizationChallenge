@@ -240,7 +240,7 @@ ListPush:
 	movq	-8(%rbp), %rax 
 ```
 3. Less jmp's
-4. And some small one's: movl $0, %eax -> xorl %eax, %eax
+4. And some small one's: ```movl $0, %eax -> xorl %eax, %eax```
 
 Fabulous
 Let't check the speed of this function!
