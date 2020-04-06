@@ -186,7 +186,7 @@ So, what you should do to rewrite code in assembler. My solution:
 2. Just copy desired function in new file, list_push.s in my example. It was assembled with [mangling][]. It is okey, because we will write ```extern```, which, by default, means ```extern "C++"```, which means C++ names. If you want C type names, write in the 3 point ```extern "C"``` and rename function in the assembler listing.
 3. In function declaration in the .cpp file, where desired function lived, wrtie: ``` extern ListPush(...); ```. And delete function definition
 4. Compile: ```g++ list_pointers.cpp list_push.s -O2```
-5. Now, if all works, with godbolt.com optimize you .s file
+5. Now, if all works, with http://godbolt.com optimize you .s file
 
 [mangling]: https://en.wikipedia.org/wiki/Name_mangling
 
