@@ -19,9 +19,13 @@ I used [Callgrind profile with 	KCacheGrind][]  to analyse the slowest functions
 
 ## Analyzing
 The profile output before optimization: 
+
 ![table.png](OptimizationPictures/1.png)
+
 As we can see, the majority of the time take ```C ListValid()``` function. It is bad! Because, Valid functions won't be in production. Let's delete these functions and run profile. Now our output:
+
 ![table.png](OptimizationPictures/2.png)
+
 Now the majority of time take memory control functions. But, I can't optimzie malloc and free functions. Let's multiply the HashTable code
 FROM:
 ``` C
@@ -66,6 +70,7 @@ number_calls++;
 ```
 Don't forget delete all free's!
 So, the final attempt for profile:
+
 ![table.png](OptimizationPictures/3.png)
 *Time:* 9.05
 YES!!!! ListPush!
