@@ -1,4 +1,4 @@
-s#include "list_pointers.cpp"
+#include "list_pointers.cpp"
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
