@@ -68,7 +68,8 @@ static int number_calls = 0;
 ListNode* new_node = memory + number_calls;
 number_calls++; 
 ```
-I inserted thiese lines in the specific my_calloc function.
+
+I inserted these lines in the specific my_calloc function.
 Don't forget delete all free's!
 So, the final attempt for profile:
 
