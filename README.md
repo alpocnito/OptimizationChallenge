@@ -13,7 +13,7 @@ Code is HashTable. The algorithm is:
 The 4 point can be visualized with this picture
 ![table.png](OptimizationPictures/table.png)
 
-I used [Callgrind profile with 	KCacheGrind][]  to analyse the slowest functions in my code. After that I rewrote this function in clear asm
+I used [Callgrind profile with 	KCacheGrind][]  to analyse the slowest functions in my code. In the Kcashgrind sort functions by ```self```, to display only the function time. After that I rewrote this function in clear asm
 
 [Callgrind profile with KCacheGrind]: https://baptiste-wicht.com/posts/2011/09/profile-c-application-with-callgrind-kcachegrind.html
 
@@ -59,8 +59,8 @@ ListNode* new_node = (ListNode*)calloc(1, sizeof(ListNode));
 ```
 To fixed memory:
 ``` C
-ListNode memory[3330927]; // 3330927 - constant == number of ListPush calls
-			  //           was calculated by static variable
+ListNode memory[3330927] = {}; // 3330927 - constant == number of ListPush calls
+			       //           was calculated by static variable
 ...
 
 static int number_calls = 0;
@@ -68,16 +68,15 @@ static int number_calls = 0;
 ListNode* new_node = memory + number_calls;
 number_calls++; 
 ```
+I inserted thiese lines in the specific my_calloc function.
 Don't forget delete all free's!
 So, the final attempt for profile:
 
 ![table.png](OptimizationPictures/3.png)
 
-**Time:** 9.05
+YES!!!! ListPush and HashTablePush!
 
-YES!!!! ListPush!
-
-Function pretty easy: 
+ListPush pretty easy: 
 ```C
 //////////////////////////////// LIST //////////////////////////////
 struct ListNode {
@@ -193,7 +192,7 @@ So, what you should do to rewrite code in assembler. My solution:
 
 After a hard coding I wrote this function in *clear* assembler. It has documentation, so you can read it carefully
 ```asm
-ListPush:
+_Z8ListPushP4ListPc:
     # new_node = memory + number_calls++;	
    	movq	_ZZ8ListPushP4ListPcE12number_calls(%rip), %rax
 	leal	1(%rax), %edx
@@ -244,11 +243,13 @@ ListPush:
 3. Less jmp's
 4. And some small one's: ```movl $0, %eax -> xorl %eax, %eax```
 
-Fabulous
+Fabulous. I also rewrote the HashTablePush function
 Let't check the speed of this function!
-https://prnt.sc/rtfy1e
+
+![table.png](OptimizationPictures/4.png)
+
+As you can see, ListPush and HashTablePush reduced their time. Comparing with old version of the program
+
 WOW, from 12.19% of all time to 5.46%. 
 ### This means x2 optimization for function and 9% optimization for all code
-But, we have HashTablePush
-Optimize it: https://prnt.sc/rth12t
 From 13.37 to 8.67. This means 35% optimization
