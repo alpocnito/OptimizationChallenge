@@ -191,7 +191,7 @@ So, what you should do to rewrite code in assembler. My solution:
 
 [mangling]: https://en.wikipedia.org/wiki/Name_mangling
 
-After a hard coding I wrote this function in *clear* assembler. It has documentation, so you can read it carefully
+After a hard coding I wrote this function in **clear** assembler. It has documentation, so you can read it carefully
 ```asm
 _Z8ListPushP4ListPc:
     # new_node = memory + number_calls++;	
