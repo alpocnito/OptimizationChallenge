@@ -13,7 +13,7 @@ Code is HashTable. The algorithm is:
 The 4 point can be visualized with this picture
 ![table.png](OptimizationPictures/table.png)
 
-I used [Callgrind profile with 	KCacheGrind][]  to analyse the slowest functions in my code. In the Kcashgrind sort functions by ```self```, to display only the function time. After that I rewrote this function in clear asm
+I used [Callgrind profile with 	KCacheGrind][]  to analyse the slowest functions in my code. In the Kcashgrind sorted functions by ```self```, to display only current function's time. After that I rewrote this function in clear asm
 
 [Callgrind profile with KCacheGrind]: https://baptiste-wicht.com/posts/2011/09/profile-c-application-with-callgrind-kcachegrind.html
 
@@ -251,4 +251,4 @@ Let't check the speed of this function!
 As you can see, ListPush and HashTablePush reduced their time. Comparing with old version of the program
 So we get	
 ### 12% optimization for all code
-Thank you for reading. Is some mistakes occurs, please, let me know
+Thank you for reading. If some mistakes occurs, please, let me know
