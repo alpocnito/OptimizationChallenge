@@ -249,7 +249,6 @@ Let't check the speed of this function!
 ![table.png](OptimizationPictures/4.png)
 
 As you can see, ListPush and HashTablePush reduced their time. Comparing with old version of the program
-
-WOW, from 12.19% of all time to 5.46%. 
-### This means x2 optimization for function and 9% optimization for all code
-From 13.37 to 8.67. This means 35% optimization
+So we get	
+### 12% optimization for all code
+Thank you for reading. Is some mistakes occurs, please, let me know
