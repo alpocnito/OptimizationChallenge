@@ -185,14 +185,17 @@ But, with ```g++ -s list_pointers.cpp -O2``` I got better code, but still with s
 So, what you should do to rewrite code in assembler. My solution:
 1. Make assembler listing for desired file wtih ```g++ -s list_pointers.cpp -O0```
 2. Just copy desired function in new file, list_push.s in my example. It was assembled with [mangling][]. It is okey, because we will write ```extern```, which, by default, means ```extern "C++"```, which means C++ names. If you want C type names, write in the 3 point ```extern "C"``` and rename function in the assembler listing.
-3. In function declaration in the .cpp file, where desired function lived, wrtie: ``` extern ListPush(...); ```. And delete function definition
-4. Compile: ```g++ list_pointers.cpp list_push.s -O2```
-5. Now, if all works, with http://godbolt.com optimize you .s file
+3. Don't forget to write ```.globl <function_name>``` in assembler file
+4. In function declaration in the .cpp file, where desired function lived, wrtie: ``` extern ListPush(...); ```. And delete function definition
+5. Compile: ```g++ list_pointers.cpp list_push.s -O2```
+6. Now, if all works, with http://godbolt.org optimize you .s file
 
 [mangling]: https://en.wikipedia.org/wiki/Name_mangling
 
 After a hard coding I wrote this function in **clear** assembler. It has documentation, so you can read it carefully
 ```asm
+.globl _Z8ListPushP4ListPc
+.type _Z8ListPushP4ListPc, @function
 _Z8ListPushP4ListPc:
     # new_node = memory + number_calls++;	
    	movq	_ZZ8ListPushP4ListPcE12number_calls(%rip), %rax
