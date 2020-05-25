@@ -22,7 +22,7 @@ The profile output before optimization:
 
 ![table.png](OptimizationPictures/1.png)
 
-As we can see, the majority of the time take ```C ListValid()``` function. It is bad! Because, Valid functions won't be in production. Let's delete these functions and run profile. Now our output:
+As we can see, the majority of the time takes ```ListValid()``` function. It is bad! Because, Valid functions won't be in production. Let's delete these functions and run profile. Now our output:
 
 ![table.png](OptimizationPictures/2.png)
 
@@ -184,7 +184,7 @@ But, with ```g++ -s list_pointers.cpp -O2``` I got better code, but still with s
 ## New code!
 So, what you should do to rewrite code in assembler. My solution:
 1. Make assembler listing for desired file wtih ```g++ -s list_pointers.cpp -O0```
-2. Just copy desired function in new file, list_push.s in my example. It was assembled with [mangling][]. It is okey, because we will write ```extern```, which, by default, means ```extern "C++"```, which means C++ names. If you want C type names, write in the 3 point ```extern "C"``` and rename function in the assembler listing.
+2. Just copy desired function in new file, list_push.s in my example. It was assembled with [mangling][]. It is okey, because we will write ```extern```, which, by default, means ```extern "C++"```, which means C++ names.
 3. Don't forget to write ```.globl <function_name>``` in assembler file
 4. In function declaration in the .cpp file, where desired function lived, wrtie: ``` extern ListPush(...); ```. And delete function definition
 5. Compile: ```g++ list_pointers.cpp list_push.s -O2```
@@ -255,4 +255,6 @@ Let't check the speed of this function!
 As you can see, ListPush and HashTablePush reduced their time. Comparing with old version of the program
 So we get	
 ### 12% optimization for all code
-Thank you for reading. If some mistakes occurs, please, let me know
+
+FIVT, I now you read it, but you don't set star! BAD
+FIVT, I now you found some mistakes and didn't write me! BAD
