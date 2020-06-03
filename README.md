@@ -256,5 +256,3 @@ As you can see, ListPush and HashTablePush reduced their time. Comparing with ol
 So we get	
 ### 12% optimization for all code
 
-## FIVT, I now you read it, but you don't set star! BAD
-#  FIVT, I now you found some mistakes and didn't write me! BAD
